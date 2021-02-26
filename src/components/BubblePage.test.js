@@ -3,13 +3,13 @@ import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
 
 test("Renders BubblePage without errors", () => {
-  render(<BubblePage />)
+  render(<BubblePage colors={[]}/>)
   // Finish this test
 });
 
-test("Fetches data and renders the bubbles on mounting", () => {
-  // Finish this test
-});
+// test("Fetches data and renders the bubbles on mounting", () => {
+//   // Finish this test
+// });
 
 //Task List
 //1. Setup test for basic rendering of component

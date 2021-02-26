@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory, useParams } from 'react-router-dom';
+
 import EditMenu from "./EditMenu";
 const initialColor = {
   color: "",
@@ -9,6 +11,7 @@ const initialColor = {
 const ColorList = ({ colors, updateColors }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const { push } = useHistory();
 
   const editColor = color => {
     setEditing(true);
@@ -17,10 +20,21 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-
+    axios
+    .put("http://localhose:5000/colors")
+    .then(res => {
+      updateColors(res.data)
+      push("/colors")
+    })
   };
 
   const deleteColor = color => {
+    axios
+    .delete("http://localhost:5000/api/colors/")
+    .then (res => {
+      updateColors(res.data);
+      push("/colors")
+    })
   };
 
   return (

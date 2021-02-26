@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
 
 test("Renders BubblePage without errors", () => {
+  render(<BubblePage />)
   // Finish this test
 });
 

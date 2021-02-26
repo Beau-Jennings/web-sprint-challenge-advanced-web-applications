@@ -22,8 +22,12 @@ const Login = (props) => {
     e.preventDefault();
     axios.post("http://localhost:5000/api/login", credentials)
     .then(res => {
-      localStorage.setItem("token", res.data.token);
-      history.push("/BubblePage");
+      console.log(res.data)
+      localStorage.setItem("token", res.data.payload);
+      history.push("/bubblepage");
+    })
+    .catch(err => {
+      console.log(err);
     })
   }
 
@@ -45,7 +49,7 @@ const Login = (props) => {
         });
         console.log(res);
       })
-  });
+  }, []);
 
   return (
     <>
@@ -65,7 +69,7 @@ const Login = (props) => {
               value={credentials.password}
               onChange={handleChange}
             />
-            <button>SUBMIT</button>
+            <button>Log In</button>
           </form>
         </div>
       </h1>
